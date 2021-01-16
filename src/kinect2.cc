@@ -749,7 +749,7 @@ Napi::Value MethodOpenColorReader(const Napi::CallbackInfo& info) {
 
     m_mColorThreadJoinedMutex.lock();
     m_tColorThread = std::thread( [] {
-      
+
       auto callback = []( Napi::Env env, Napi::Function jsCallback, RGBQUAD* pixelsRef ) {
         if (!m_bColorThreadRunning) {
           return;
@@ -852,7 +852,7 @@ Napi::Value MethodOpenInfraredReader(const Napi::CallbackInfo& info) {
 
     m_mInfraredThreadJoinedMutex.lock();
     m_tInfraredThread = std::thread( [] {
-      
+
       auto callback = []( Napi::Env env, Napi::Function jsCallback, char* pixelsRef ) {
         if (!m_bInfraredThreadRunning) {
           return;
@@ -955,7 +955,7 @@ Napi::Value MethodOpenLongExposureInfraredReader(const Napi::CallbackInfo& info)
 
     m_mLongExposureInfraredThreadJoinedMutex.lock();
     m_tLongExposureInfraredThread = std::thread( [] {
-      
+
       auto callback = []( Napi::Env env, Napi::Function jsCallback, char* pixelsRef ) {
         if (!m_bLongExposureInfraredThreadRunning) {
           return;
@@ -1058,7 +1058,7 @@ Napi::Value MethodOpenDepthReader(const Napi::CallbackInfo& info) {
 
     m_mDepthThreadJoinedMutex.lock();
     m_tDepthThread = std::thread( [] {
-      
+
       auto callback = []( Napi::Env env, Napi::Function jsCallback, char* pixelsRef ) {
         if (!m_bDepthThreadRunning) {
           return;
@@ -1161,7 +1161,7 @@ Napi::Value MethodOpenRawDepthReader(const Napi::CallbackInfo& info) {
 
     m_mRawDepthThreadJoinedMutex.lock();
     m_tRawDepthThread = std::thread( [] {
-      
+
       auto callback = []( Napi::Env env, Napi::Function jsCallback, UINT16* pixelsRef ) {
         if (!m_bRawDepthThreadRunning) {
           return;
@@ -1264,7 +1264,7 @@ Napi::Value MethodOpenBodyReader(const Napi::CallbackInfo& info) {
 
     m_mBodyThreadJoinedMutex.lock();
     m_tBodyThread = std::thread( [] {
-      
+
       auto callback = []( Napi::Env env, Napi::Function jsCallback ) {
         if (!m_bBodyThreadRunning) {
           return;
@@ -1431,7 +1431,7 @@ Napi::Value MethodOpenMultiSourceReader(const Napi::CallbackInfo& info) {
 
     m_mMultiSourceThreadJoinedMutex.lock();
     m_tMultiSourceThread = std::thread( [] {
-      
+
       auto callback = []( Napi::Env env, Napi::Function jsCallback ) {
         if (!m_bMultiSourceThreadRunning) {
           return;
@@ -1738,8 +1738,8 @@ Napi::Value MethodOpenMultiSourceReader(const Napi::CallbackInfo& info) {
                   // skip processing for this pixel
                   if (p.X != -std::numeric_limits<float>::infinity() && p.Y != -std::numeric_limits<float>::infinity())
                   {
-                    int colorX = static_cast<int>( std::floor( p.X + 0.5f ) );
-                    int colorY = static_cast<int>( std::floor( p.Y + 0.5f ) );
+                    int colorX = static_cast<int>( floor( p.X + 0.5f ) );
+                    int colorY = static_cast<int>( floor( p.Y + 0.5f ) );
                     if( ( 0 <= colorX ) && ( colorX < cColorWidth ) && ( 0 <= colorY ) && ( colorY < cColorHeight ) ){
                       m_pDepthColorPixels[depthIndex] = m_pColorPixels[colorY * cColorWidth + colorX];
                     }
@@ -1894,13 +1894,13 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
 
   exports.Set(Napi::String::New(env, "openColorReader"), Napi::Function::New(env, MethodOpenColorReader));
   exports.Set(Napi::String::New(env, "closeColorReader"), Napi::Function::New(env, MethodCloseColorReader));
-  
+
   exports.Set(Napi::String::New(env, "openInfraredReader"), Napi::Function::New(env, MethodOpenInfraredReader));
   exports.Set(Napi::String::New(env, "closeInfraredReader"), Napi::Function::New(env, MethodCloseInfraredReader));
-  
+
   exports.Set(Napi::String::New(env, "openLongExposureInfraredReader"), Napi::Function::New(env, MethodOpenLongExposureInfraredReader));
   exports.Set(Napi::String::New(env, "closeLongExposureInfraredReader"), Napi::Function::New(env, MethodCloseLongExposureInfraredReader));
-  
+
   exports.Set(Napi::String::New(env, "openDepthReader"), Napi::Function::New(env, MethodOpenDepthReader));
   exports.Set(Napi::String::New(env, "closeDepthReader"), Napi::Function::New(env, MethodCloseDepthReader));
 
