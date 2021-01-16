@@ -662,9 +662,9 @@ Napi::Object getV8BodyFrame(Napi::Env env, JSBodyFrame* bodyFrameRef)
         v8joint.Set(Napi::String::New(env, "depthY"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].depthY));
         v8joint.Set(Napi::String::New(env, "colorX"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].colorX));
         v8joint.Set(Napi::String::New(env, "colorY"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].colorY));
-        v8joint.Set(Napi::String::New(env, "cameraX"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].cameraX));
-        v8joint.Set(Napi::String::New(env, "cameraY"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].cameraY));
-        v8joint.Set(Napi::String::New(env, "cameraZ"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].cameraZ));
+        v8joint.Set(Napi::String::New(env, "positionX"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].cameraX));
+        v8joint.Set(Napi::String::New(env, "positionY"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].cameraY));
+        v8joint.Set(Napi::String::New(env, "positionZ"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].cameraZ));
         //orientation
         v8joint.Set(Napi::String::New(env, "orientationX"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].orientationX));
         v8joint.Set(Napi::String::New(env, "orientationY"), Napi::Number::New(env, m_jsBodyFrameV8.bodies[i].joints[j].orientationY));
